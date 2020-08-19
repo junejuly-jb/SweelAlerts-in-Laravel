@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="jumbotron">
-        <h3 class="text-center">List of Employees</h3>
-    </div>
     <!-- Button trigger modal -->
     <div class="py-2">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -49,8 +46,17 @@
     {{-- @if (count($employees) > 0)
         @foreach ($employees as $employee) --}}
             <div class="card">
-                <div class="card-headear py-3 px-3 bg-light">
-                    <h5>Employees</h5>
+                <div class="card-headear py-5 px-4 bg-light">
+                    @if (count($employees) > 0)
+                        @if (count($employees) <= 1)
+                            <h4 style="padding: 0; margin:0;">Showing <span class="text-primary">{{count($employees)}}</span> Employee</h4>
+                        @else
+                            <h4 style="padding: 0; margin:0;">Showing <span class="text-primary">{{count($employees)}}</span> Employees</h4>
+                        @endif
+                        
+                    @else
+                        <h4>No Records</h4>
+                    @endif
                 </div>
                 <div class="container">
                     <table class="table table-hover">
@@ -84,7 +90,7 @@
                                 </tr>
                                 @endforeach
                             @else
-                                <h3>No Records!</h3>
+                                {{-- <h3>No Records!</h3> --}}
                             @endif
                         </tbody>
                     </table>
